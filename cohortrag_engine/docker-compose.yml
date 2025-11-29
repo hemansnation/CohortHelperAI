@@ -1,0 +1,156 @@
+# CohortRAG Engine - Docker Compose Configuration
+# Multiple environments: development, production, and full stack
+
+version: '3.8'
+
+# =============================================================================
+# Services
+# =============================================================================
+services:
+
+  # CohortRAG Engine - Main application
+  cohortrag:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+      args:
+        INSTALL_DEV: false
+    container_name: cohortrag-engine
+    restart: unless-stopped
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - DATA_DIR=/app/data
+      - CHROMA_DB_PATH=/app/chroma_db
+      - LOG_DIR=/app/logs
+      - REDIS_URL=redis://redis:6379
+      - ENABLE_CACHING=true
+      - CACHE_TYPE=redis
+    volumes:
+      - ./data:/app/data
+      - ./chroma_db:/app/chroma_db
+      - ./logs:/app/logs
+      - ./.env:/app/.env:ro
+    depends_on:
+      - redis
+    networks:
+      - cohortrag-network
+    stdin_open: true
+    tty: true
+
+  # Redis - Caching layer
+  redis:
+    image: redis:7-alpine
+    container_name: cohortrag-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    networks:
+      - cohortrag-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Development environment
+  cohortrag-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+      args:
+        INSTALL_DEV: true
+    container_name: cohortrag-dev
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - COHORTRAG_ENV=development
+      - DEBUG=true
+    volumes:
+      - .:/app
+      - dev_cache:/home/app/.cache
+    networks:
+      - cohortrag-network
+    stdin_open: true
+    tty: true
+    profiles:
+      - development
+
+  # Jupyter environment for research and development
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: jupyter
+    container_name: cohortrag-jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - .:/app
+      - jupyter_data:/home/app/.jupyter
+    networks:
+      - cohortrag-network
+    profiles:
+      - jupyter
+
+  # Monitoring stack (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: cohortrag-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - cohortrag-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: cohortrag-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - cohortrag-network
+    profiles:
+      - monitoring
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  cohortrag-network:
+    driver: bridge
+    name: cohortrag-network
+
+# =============================================================================
+# Volumes
+# =============================================================================
+volumes:
+  redis_data:
+    name: cohortrag_redis_data
+  dev_cache:
+    name: cohortrag_dev_cache
+  jupyter_data:
+    name: cohortrag_jupyter_data
+  prometheus_data:
+    name: cohortrag_prometheus_data
+  grafana_data:
+    name: cohortrag_grafana_data

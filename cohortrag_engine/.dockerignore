@@ -1,0 +1,129 @@
+# CohortRAG Engine - Docker Ignore File
+# Exclude files and directories from Docker build context
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitmodules
+.gitattributes
+
+# Documentation (included in image but not needed for build)
+docs/
+*.md
+!README.md
+
+# Test files
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Development tools
+.mypy_cache/
+.flake8
+.black
+.isort.cfg
+.pre-commit-config.yaml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+*.bak
+
+# Data directories (mounted as volumes)
+data/
+chroma_db/
+logs/
+backups/
+
+# Environment files (mounted separately)
+.env
+.env.*
+!.env.example
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+# Package manager files
+pip-wheel-metadata/
+.pip-cache/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+evaluation_data/
+migration_data.json
+*.pkl
+*.json.bak
+
+# Monitoring configuration
+monitoring/
+prometheus.yml
+grafana/
+
+# Local development files
+local_config/
+scratch/
+playground/

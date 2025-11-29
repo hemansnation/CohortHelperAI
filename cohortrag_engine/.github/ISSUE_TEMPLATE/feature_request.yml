@@ -1,0 +1,232 @@
+name: 🚀 Feature Request
+description: Suggest a new feature or enhancement for CohortRAG Engine
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible to help us understand your request.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm before submitting a feature request
+      options:
+        - label: I have searched existing issues and discussions to ensure this isn't a duplicate
+          required: true
+        - label: I have checked the roadmap and documentation for planned features
+          required: true
+        - label: This feature would benefit the broader CohortRAG Engine community
+          required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: A brief, clear summary of the feature you're requesting
+      placeholder: One-sentence summary of the feature
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category
+      description: What area of CohortRAG Engine would this feature affect?
+      options:
+        - Core RAG Engine
+        - Document Processing/Ingestion
+        - Query Processing/Retrieval
+        - CLI Tools & User Interface
+        - API Integration (LLM providers)
+        - Performance & Optimization
+        - Monitoring & Observability
+        - Docker & Deployment
+        - Evaluation & Metrics
+        - Documentation & Examples
+        - Developer Experience
+        - Security
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What pain point are you experiencing?
+      placeholder: |
+        Describe the problem you're trying to solve or the limitation you're facing.
+
+        Example: "Currently, when processing large document collections, there's no way to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution in detail
+      placeholder: |
+        Describe how you envision this feature working.
+
+        Include:
+        - How users would interact with this feature
+        - What the API/interface would look like
+        - How it fits into the existing architecture
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative approaches?
+      placeholder: |
+        Describe any alternative solutions or features you've considered.
+        Why is your proposed solution better?
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Usage Examples
+      description: Provide concrete examples of how this feature would be used
+      placeholder: |
+        Show how users would use this feature with code examples or CLI commands.
+
+        ```python
+        # Example usage
+        from cohortrag_engine import CohortRAGEngine
+
+        engine = CohortRAGEngine()
+        # Your proposed feature usage here
+        ```
+      render: markdown
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature to you and your use case?
+      options:
+        - Critical (blocks current work)
+        - High (significant improvement to workflow)
+        - Medium (nice to have, would improve experience)
+        - Low (minor improvement)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Low (small change, minimal impact)
+        - Medium (moderate change, some architectural impact)
+        - High (significant change, major architectural impact)
+        - Very High (fundamental change, extensive refactoring)
+        - Unknown (not sure about complexity)
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Expected Impact
+      description: What benefits would this feature provide?
+      placeholder: |
+        Describe the expected benefits:
+        - Who would benefit from this feature?
+        - How would it improve the user experience?
+        - Would it improve performance, usability, functionality, etc.?
+        - Are there any potential breaking changes or compatibility concerns?
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How would you know when this feature is complete and working correctly?
+      placeholder: |
+        Define clear, testable criteria for when this feature would be considered done:
+
+        - [ ] Users can...
+        - [ ] The feature handles edge cases like...
+        - [ ] Documentation is updated with...
+        - [ ] Tests cover...
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References & Research
+      description: Any relevant links, papers, or examples from other projects?
+      placeholder: |
+        Include any relevant:
+        - Links to similar features in other projects
+        - Research papers or articles
+        - Documentation or specifications
+        - Related GitHub issues or discussions
+
+  - type: dropdown
+    id: willingness
+    attributes:
+      label: Implementation Willingness
+      description: Would you be willing to help implement this feature?
+      options:
+        - Yes, I can implement this feature myself
+        - Yes, I can help with implementation guidance
+        - Yes, I can help with testing and feedback
+        - Maybe, depending on complexity and guidance
+        - No, but I would test and provide feedback
+        - No, I cannot contribute to implementation
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_details
+    attributes:
+      label: Technical Implementation Details
+      description: Any specific technical considerations or implementation ideas?
+      placeholder: |
+        If you have technical insights, please share:
+        - Specific libraries or dependencies needed
+        - Database or storage considerations
+        - API design suggestions
+        - Performance implications
+        - Architectural considerations
+
+  - type: checkboxes
+    id: compatibility
+    attributes:
+      label: Compatibility Considerations
+      description: Please check all that apply
+      options:
+        - label: This feature should maintain backward compatibility
+          required: false
+        - label: Breaking changes would be acceptable for this feature
+          required: false
+        - label: This feature needs to work with Docker deployments
+          required: false
+        - label: This feature needs to work across all supported Python versions
+          required: false
+        - label: This feature should be optional/configurable
+          required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, screenshots, diagrams, or information
+      placeholder: |
+        Include any additional context that might be helpful:
+        - Screenshots or mockups
+        - Architecture diagrams
+        - Links to related discussions
+        - Real-world use cases
+        - Any other relevant information

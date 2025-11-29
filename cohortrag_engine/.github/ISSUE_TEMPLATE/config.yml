@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 General Discussion
+    url: https://github.com/YourUsername/CohortHelperAI/discussions
+    about: Ask questions, share ideas, or discuss CohortRAG Engine with the community
+  - name: 🔒 Security Issue
+    url: https://github.com/YourUsername/CohortHelperAI/security/advisories/new
+    about: Report security vulnerabilities privately through GitHub Security Advisories
+  - name: 📖 Documentation
+    url: https://github.com/YourUsername/CohortHelperAI/tree/main/cohortrag_engine/docs
+    about: Browse the comprehensive documentation and guides
+  - name: 🐳 Docker Support
+    url: https://github.com/YourUsername/CohortHelperAI/blob/main/cohortrag_engine/docs/docker_deployment.md
+    about: Get help with Docker deployment and containerization

@@ -1,0 +1,190 @@
+name: 🐛 Bug Report
+description: Report a bug or issue with CohortRAG Engine
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out this form as completely as possible.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm before submitting a bug report
+      options:
+        - label: I have searched existing issues to ensure this isn't a duplicate
+          required: true
+        - label: I am using the latest version of CohortRAG Engine
+          required: true
+        - label: I have read the documentation and troubleshooting guides
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: Describe what happened and what you expected to happen
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Provide detailed steps to reproduce the issue
+      placeholder: |
+        1. Install CohortRAG Engine with `pip install cohortrag-engine`
+        2. Run the following code:
+           ```python
+           from cohortrag_engine import CohortRAGEngine
+           engine = CohortRAGEngine()
+           # ... your code here
+           ```
+        3. Observe the error
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: Describe the expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened? Include error messages, stack traces, etc.
+      placeholder: Paste error messages, stack traces, or describe what actually happened
+    validations:
+      required: true
+
+  - type: dropdown
+    id: installation
+    attributes:
+      label: Installation Method
+      description: How did you install CohortRAG Engine?
+      options:
+        - PyPI (pip install cohortrag-engine)
+        - Docker (official image)
+        - Source code (git clone)
+        - Other (please specify in additional context)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: CohortRAG Engine Version
+      description: What version are you using?
+      placeholder: "1.0.0 (run `python -c 'import cohortrag_engine; print(cohortrag_engine.__version__)'`)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Information
+      description: Please provide details about your environment
+      placeholder: |
+        - OS: [e.g., Ubuntu 22.04, macOS 13.0, Windows 11]
+        - Python version: [e.g., 3.11.5]
+        - Docker version (if applicable): [e.g., 20.10.21]
+        - API keys configured: [Yes/No - don't include actual keys]
+        - Other relevant software versions
+      value: |
+        - OS:
+        - Python version:
+        - Docker version (if applicable):
+        - API keys configured:
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component
+      description: Which component is affected by this bug?
+      options:
+        - Core RAG Engine
+        - Document Ingestion
+        - Query Processing
+        - CLI Tools
+        - Docker Deployment
+        - API Integration (Gemini)
+        - Caching (Redis)
+        - Benchmarking/Validation
+        - Documentation
+        - Other/Unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Bug Severity
+      description: How severe is this bug?
+      options:
+        - Critical (system crash, data loss, security issue)
+        - High (major feature broken, significant performance issue)
+        - Medium (minor feature broken, workaround available)
+        - Low (cosmetic issue, minor inconvenience)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Please paste any relevant log output (remove sensitive information)
+      render: shell
+      placeholder: |
+        Paste log output here. Make sure to remove any sensitive information like API keys.
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration
+      description: Share relevant configuration (remove sensitive values)
+      render: yaml
+      placeholder: |
+        # Share relevant parts of your configuration
+        # IMPORTANT: Remove API keys and other sensitive data
+
+        # Example:
+        chunk_size: 512
+        similarity_top_k: 3
+        enable_caching: true
+        # ... other config
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context about the problem
+      placeholder: |
+        - Screenshots (if applicable)
+        - Links to related issues
+        - Potential workarounds you've tried
+        - Any other relevant information
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you be willing to contribute to fixing this bug?
+      options:
+        - label: I would be willing to submit a PR to fix this bug
+          required: false

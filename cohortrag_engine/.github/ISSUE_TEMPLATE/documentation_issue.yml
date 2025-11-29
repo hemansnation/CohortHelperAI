@@ -1,0 +1,263 @@
+name: 📚 Documentation Issue
+description: Report an issue with documentation, guides, or examples
+title: "[DOCS] "
+labels: ["documentation", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve our documentation! Clear documentation is essential for a great developer experience.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm before submitting a documentation issue
+      options:
+        - label: I have searched existing issues to ensure this isn't already reported
+          required: true
+        - label: I have checked the latest version of the documentation
+          required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue Type
+      description: What type of documentation issue is this?
+      options:
+        - Incorrect or outdated information
+        - Missing documentation
+        - Unclear or confusing explanation
+        - Broken links or references
+        - Code examples don't work
+        - Typo or grammatical error
+        - Poor organization or structure
+        - Missing examples or use cases
+        - API documentation issues
+        - Installation guide problems
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Documentation Location
+      description: Where is this documentation issue located?
+      options:
+        - README.md (main repository)
+        - Installation Guide (docs/install.md)
+        - Docker Deployment Guide (docs/docker_deployment.md)
+        - Self-Hosting Guide (docs/self_host.md)
+        - API Documentation (code docstrings)
+        - CLI Documentation (--help text)
+        - PyPI Package Description
+        - Code Examples/Tutorials
+        - GitHub Issues/PR Templates
+        - Contributing Guidelines
+        - Other (please specify)
+    validations:
+      required: true
+
+  - type: input
+    id: specific_location
+    attributes:
+      label: Specific Location
+      description: Provide the specific file path, URL, or section where the issue occurs
+      placeholder: "e.g., docs/install.md, line 25 OR https://github.com/... OR 'Quick Start' section"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_content
+    attributes:
+      label: Current Content
+      description: Quote the current documentation content that has issues
+      placeholder: |
+        Copy and paste the exact text, code, or content that needs to be fixed.
+
+        Use code blocks for code examples:
+        ```
+        Current content here
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue_description
+    attributes:
+      label: Issue Description
+      description: Clearly describe what's wrong with the current documentation
+      placeholder: |
+        Explain the problem with the current documentation:
+        - What's incorrect, missing, or confusing?
+        - Why is it problematic for users?
+        - What confusion or errors does it cause?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_improvement
+    attributes:
+      label: Suggested Improvement
+      description: How should the documentation be improved?
+      placeholder: |
+        Provide your suggested improvement:
+        - Corrected text or code
+        - Additional information that should be included
+        - Better organization or structure
+        - Clearer explanations
+
+        Use code blocks for code suggestions:
+        ```python
+        # Corrected code example
+        ```
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_type
+    attributes:
+      label: User Perspective
+      description: From whose perspective is this documentation issue most problematic?
+      options:
+        - New users (first-time installation/setup)
+        - Developers integrating CohortRAG Engine
+        - System administrators (deployment)
+        - Contributors to the project
+        - Advanced users (customization)
+        - All users
+        - Other (please specify)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this documentation issue?
+      options:
+        - Critical (completely blocks users from proceeding)
+        - High (causes significant confusion or incorrect setup)
+        - Medium (creates minor confusion but has workarounds)
+        - Low (cosmetic or minor improvement)
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_context
+    attributes:
+      label: User Context
+      description: Provide context about how you encountered this issue
+      placeholder: |
+        Help us understand the context:
+        - What were you trying to accomplish?
+        - What steps led you to this documentation?
+        - What was your experience level with RAG systems or Python?
+        - Did you find workarounds?
+    validations:
+      required: true
+
+  - type: textarea
+    id: tested_examples
+    attributes:
+      label: Tested Examples
+      description: If reporting broken code examples, provide details about what you tested
+      placeholder: |
+        If this involves code examples:
+        - What exactly did you run?
+        - What error messages did you get?
+        - What environment were you using?
+
+        ```bash
+        # Commands you ran
+        ```
+
+        ```
+        Error output here
+        ```
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (if relevant)
+      description: Your environment details if they're relevant to the documentation issue
+      placeholder: |
+        Only if relevant to the documentation issue:
+        - OS: [e.g., Ubuntu 22.04, macOS 13.0, Windows 11]
+        - Python version: [e.g., 3.11.5]
+        - Installation method: [PyPI, Docker, source]
+        - CohortRAG Engine version: [e.g., 1.0.0]
+
+  - type: textarea
+    id: related_docs
+    attributes:
+      label: Related Documentation
+      description: Are there other parts of the documentation that should be updated consistently?
+      placeholder: |
+        Mention other documentation that might need similar updates:
+        - Related sections or files
+        - Cross-references that need updating
+        - Consistency issues across different docs
+
+  - type: checkboxes
+    id: doc_types
+    attributes:
+      label: Documentation Types Affected
+      description: What types of documentation need attention? (Check all that apply)
+      options:
+        - label: Installation instructions
+          required: false
+        - label: Code examples
+          required: false
+        - label: API documentation
+          required: false
+        - label: Configuration guides
+          required: false
+        - label: Deployment instructions
+          required: false
+        - label: Troubleshooting guides
+          required: false
+        - label: Best practices
+          required: false
+        - label: Reference material
+          required: false
+
+  - type: textarea
+    id: additional_suggestions
+    attributes:
+      label: Additional Suggestions
+      description: Any other suggestions for improving the documentation?
+      placeholder: |
+        Any additional thoughts:
+        - Other areas that could be improved
+        - Missing documentation you'd like to see
+        - General feedback about documentation structure
+        - Suggestions for new examples or tutorials
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you be willing to help improve the documentation?
+      options:
+        - label: I would be willing to submit a PR with the documentation fix
+          required: false
+        - label: I could help review documentation improvements
+          required: false
+        - label: I could help test documentation examples
+          required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
+      placeholder: |
+        Include any additional context that might be helpful:
+        - Screenshots of confusing interfaces
+        - Links to related discussions or resources
+        - References to good documentation examples
+        - Any other relevant information
