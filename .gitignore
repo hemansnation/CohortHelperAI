@@ -79,3 +79,15 @@ logs/
 models/
 .cache/
 transformers_cache/
+
+# Development and internal files - DO NOT COMMIT
+PROJECT_LOG.md
+project_plan.md
+test_enhanced_retrieval.py
+internal_docs/
+development_notes/
+*.internal.md
+*.dev.py
+.claude/
+scratch/
+playground/
